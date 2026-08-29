@@ -4,9 +4,7 @@ import pickle
 from datetime import datetime, time, timedelta
 
 
-# --------------------------------------------------
-# LOAD MODEL
-# --------------------------------------------------
+
 
 with open("mental_health_risk_model.pkl", "rb") as file:
     model = pickle.load(file)
@@ -18,9 +16,7 @@ with open("mental_health_features.pkl", "rb") as file:
     features = pickle.load(file)
 
 
-# --------------------------------------------------
-# PAGE CONFIG
-# --------------------------------------------------
+
 
 st.set_page_config(
     page_title="Mental Health Risk Predictor",
@@ -29,9 +25,7 @@ st.set_page_config(
 )
 
 
-# --------------------------------------------------
-# TITLE
-# --------------------------------------------------
+
 
 st.title("Mental Health Risk Predictor")
 
@@ -41,9 +35,7 @@ st.write(
 )
 
 
-# --------------------------------------------------
-# HOW TO USE
-# --------------------------------------------------
+
 
 with st.expander("ℹ️ How to use this tool", expanded=False):
 
@@ -132,9 +124,7 @@ as one.
     )
 
 
-# --------------------------------------------------
-# SMALL HELPER
-# --------------------------------------------------
+
 
 def calculate_sleep_midpoint(bed_time, wake_time):
     """
@@ -162,9 +152,7 @@ def calculate_sleep_midpoint(bed_time, wake_time):
     return decimal_hour
 
 
-# --------------------------------------------------
-# INPUT FORM
-# --------------------------------------------------
+
 
 with st.form("prediction_form"):
 
@@ -178,9 +166,7 @@ with st.form("prediction_form"):
 
     st.divider()
 
-    # --------------------------------------------------
-    # SCREEN SECTION
-    # --------------------------------------------------
+
 
     st.subheader("Screen Habits")
 
@@ -215,9 +201,7 @@ with st.form("prediction_form"):
     )
 
 
-    # --------------------------------------------------
-    # SLEEP SECTION
-    # --------------------------------------------------
+
 
     st.subheader("Sleep Quality")
 
@@ -257,9 +241,6 @@ with st.form("prediction_form"):
     )
 
 
-    # --------------------------------------------------
-    # SLEEP DURATION
-    # --------------------------------------------------
 
     st.subheader("Sleep Schedule")
 
@@ -285,9 +266,7 @@ with st.form("prediction_form"):
     )
 
 
-    # --------------------------------------------------
-    # SUBMIT
-    # --------------------------------------------------
+
 
     submitted = st.form_submit_button(
         "Check Risk",
@@ -295,13 +274,11 @@ with st.form("prediction_form"):
     )
 
 
-# --------------------------------------------------
-# PREDICTION
-# --------------------------------------------------
+
 
 if submitted:
 
-    # Calculate values that previously confused the user
+
 
     screen_time_index = (
         screen_normal_day
@@ -324,9 +301,7 @@ if submitted:
     )
 
 
-    # --------------------------------------------------
-    # SHOW CALCULATED VALUES
-    # --------------------------------------------------
+
 
     with st.expander("See calculated model inputs"):
 
@@ -346,9 +321,7 @@ if submitted:
         )
 
 
-    # --------------------------------------------------
-    # CREATE MODEL INPUT
-    # --------------------------------------------------
+
 
     input_data = pd.DataFrame([{
         "sex": sex,
@@ -362,14 +335,11 @@ if submitted:
     }])
 
 
-    # Ensure exact trained feature order
+
 
     input_data = input_data[features]
 
 
-    # --------------------------------------------------
-    # PREDICT
-    # --------------------------------------------------
 
     probability = model.predict_proba(input_data)[0, 1]
 
@@ -378,9 +348,6 @@ if submitted:
     )
 
 
-    # --------------------------------------------------
-    # RESULT
-    # --------------------------------------------------
 
     st.divider()
 
@@ -407,10 +374,6 @@ if submitted:
             "It is not a diagnosis."
         )
 
-
-# --------------------------------------------------
-# DISCLAIMER
-# --------------------------------------------------
 
 st.divider()
 
