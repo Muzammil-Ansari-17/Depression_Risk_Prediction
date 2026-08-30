@@ -6,6 +6,12 @@ The project includes the complete model development process in Jupyter Notebook 
 
 This project is for educational purposes only and is not intended to provide a medical diagnosis.
 
+## Live Demo
+
+The project is deployed on Streamlit and can be tested online.
+
+**Website:** [Depression Risk Prediction App](https://depressionriskprediction-drp.streamlit.app/)
+
 Live App
 
 The project is deployed using Streamlit.
