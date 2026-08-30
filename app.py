@@ -19,7 +19,7 @@ with open("mental_health_features.pkl", "rb") as file:
 
 
 st.set_page_config(
-    page_title="Mental Health Risk Predictor",
+    page_title="Depression Risk Predictor",
     page_icon="🧠",
     layout="centered"
 )
