@@ -359,19 +359,29 @@ if submitted:
     )
 
     if prediction == 1:
-        st.warning("Your responses suggest a higher-risk pattern.")
+        st.warning("Higher-risk pattern detected")
 
         st.write(
-            "This result is based on your screen and sleep habits. "
-            "It is not a diagnosis."
+            "This result is not a diagnosis. If you've also been experiencing "
+            "persistent low mood, loss of interest, sleep problems, hopelessness, "
+            "or difficulty functioning, consider speaking with a qualified "
+            "mental-health professional."
         )
 
-    else:
-        st.success("Your responses suggest a lower-risk pattern.")
+        st.subheader("What you can do next")
 
-        st.write(
-            "This result is based on your screen and sleep habits. "
-            "It is not a diagnosis."
+        st.markdown("""
+        **Reliable resources**
+
+        - [WHO — Depression: symptoms, treatment and self-care](https://www.who.int/news-room/fact-sheets/detail/depression)
+        - [WHO — Depression overview](https://www.who.int/health-topics/depression)
+        - [WHO — Psychological self-help resources](https://www.who.int/teams/mental-health-and-substance-use/treatment-care/Psychological-interventions/psychological-self-help-interventions)
+        """)
+
+        st.info(
+            "If you're concerned about your mental health, consider talking to "
+            "a psychologist, psychiatrist, counsellor, or another qualified "
+            "healthcare professional."
         )
 
 
