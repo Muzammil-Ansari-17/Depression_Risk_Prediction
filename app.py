@@ -27,7 +27,7 @@ st.set_page_config(
 
 
 
-st.title("Mental Health Risk Predictor")
+st.title("Depression Risk Predictor")
 
 st.write(
     "This tool estimates whether a person's screen-use and sleep pattern "
